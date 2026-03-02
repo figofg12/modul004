@@ -1,0 +1,139 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="d-flex justify-content-between mb-3">
+    <h3>Data Kategori</h3>
+    <a href="{{ route('categories.create') }}" class="btn btn-primary">+ Tambah</a>
+</div>
+
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+
+{{-- Informasi Jumlah Data --}}
+<div class="row mb-3">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body py-2">
+<<<<<<< HEAD
+                <strong>Total Kategori: {{ $totalCategories }}</strong>
+=======
+                <div class="small opacity-75">Total Kategori</div>
+                <div class="fs-4 fw-bold">{{ $totalCategories }}</div>
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success">
+            <div class="card-body py-2">
+<<<<<<< HEAD
+                <strong>Total Semua Buku: {{ $totalBooks }}</strong>
+=======
+                <div class="small opacity-75">Total Semua Buku</div>
+                <div class="fs-4 fw-bold">{{ $totalBooks }}</div>
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+            </div>
+        </div>
+    </div>
+</div>
+
+<<<<<<< HEAD
+{{-- Form Pencarian --}}
+<div class="card mb-3">
+    <div class="card-body">
+        <form action="{{ route('categories.index') }}" method="GET" class="row g-2 align-items-end">
+            <div class="col-md-8">
+                <label class="form-label mb-1">Cari Nama Kategori</label>
+                <input type="text" name="search" class="form-control"
+                       placeholder="Masukkan nama kategori..."
+                       value="{{ request('search') }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-info w-100">Cari</button>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ route('categories.index') }}" class="btn btn-secondary w-100">Reset</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- Tabel Kategori --}}
+<div class="card">
+    <div class="card-body">
+
+        <p class="text-muted">
+            Menampilkan <strong>{{ $categories->count() }}</strong> kategori
+            @if(request('search'))
+                untuk pencarian: <em>"{{ request('search') }}"</em>
+            @endif
+        </p>
+
+=======
+{{-- Tabel Kategori --}}
+<div class="card">
+    <div class="card-body">
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kategori</th>
+                    <th>Deskripsi</th>
+                    <th>Jumlah Buku</th>
+                    <th width="150">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($categories as $key => $category)
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $category->nama_kategori }}</td>
+                    <td>{{ $category->deskripsi ?? '-' }}</td>
+                    <td>
+<<<<<<< HEAD
+                        <span class="badge bg-info">{{ $category->books_count }} buku</span>
+=======
+                        <span class="badge bg-primary rounded-pill text-white">{{ $category->books_count }}</span>
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+                    </td>
+                    <td>
+                        <a href="{{ route('categories.edit', $category->id) }}"
+                           class="btn btn-warning btn-sm">Edit</a>
+
+                        <form action="{{ route('categories.destroy', $category->id) }}"
+                              method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin hapus kategori ini?')">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+<<<<<<< HEAD
+                    <td colspan="5" class="text-center text-muted">Tidak ada kategori ditemukan.</td>
+=======
+                    <td colspan="5" class="text-center text-muted">Belum ada data kategori.</td>
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7dbbb5218ca48f1b787d6a70724430975294f54d
+    </div>
+</div>
+
+@endsection
