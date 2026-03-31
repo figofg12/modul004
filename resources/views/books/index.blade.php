@@ -2,9 +2,19 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between mb-3">
+<div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Data Book</h3>
-    <a href="{{ route('books.create') }}" class="btn btn-primary">+ Tambah</a>
+
+    <div class="d-flex align-items-center gap-2">
+        <span>Halo, {{ Auth::user()->name }}</span>
+
+        <a href="{{ route('books.create') }}" class="btn btn-primary">+ Tambah</a>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button class="btn btn-danger">Logout</button>
+        </form>
+    </div>
 </div>
 
 @if(session('success'))
